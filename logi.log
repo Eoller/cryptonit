@@ -1,0 +1,31 @@
+2018-12-24 13:56:09.994  INFO 1810 --- [main] p.eoller.cryptonit.CryptonitApplication  : Starting CryptonitApplication on MacBook-Pro-Jegor.local with PID 1810 (/Users/jegormelnik/IdeaProjects/cryptonit/target/classes started by jegormelnik in /Users/jegormelnik/IdeaProjects/cryptonit)
+2018-12-24 13:56:09.999  INFO 1810 --- [main] p.eoller.cryptonit.CryptonitApplication  : No active profile set, falling back to default profiles: default
+2018-12-24 13:56:11.366  INFO 1810 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-24 13:56:11.390  INFO 1810 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-24 13:56:11.390  INFO 1810 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-24 13:56:11.398  INFO 1810 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/jegormelnik/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2018-12-24 13:56:11.480  INFO 1810 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-24 13:56:11.481  INFO 1810 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1359 ms
+2018-12-24 13:56:11.536  WARN 1810 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'coinmarketcapService': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.web.client.RestTemplate' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-12-24 13:56:11.538  INFO 1810 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-24 13:56:11.549  INFO 1810 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-24 13:56:11.674 ERROR 1810 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field restTemplate in pl.eoller.cryptonit.service.CoinmarketcapService required a bean of type 'org.springframework.web.client.RestTemplate' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.web.client.RestTemplate' in your configuration.
+
