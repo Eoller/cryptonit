@@ -2,6 +2,7 @@ package pl.eoller.cryptonit.model.coinmarketcap;
 
 import lombok.Data;
 
+
 @Data
 public class MonetInfo {
 
@@ -10,6 +11,5 @@ public class MonetInfo {
     private double changePercent24h;
     private double priceInUSD;
     private double volume;
-    // private Date updateTime;
 
 }

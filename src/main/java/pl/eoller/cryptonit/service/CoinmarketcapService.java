@@ -2,13 +2,9 @@ package pl.eoller.cryptonit.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.eoller.cryptonit.mapper.coinmarketcap.CoinmarketcapMapper;
 import pl.eoller.cryptonit.model.coinmarketcap.LatestMonetInfo;
 import pl.eoller.cryptonit.model.coinmarketcap.MonetInfo;
 import pl.eoller.cryptonit.util.URLs;
@@ -27,10 +23,23 @@ public class CoinmarketcapService {
     public List<MonetInfo> getAllCoinsInfo() {
         HttpEntity<String> entity = new HttpEntity<>("parameters", getHeadersWithAuth());
 
-        ResponseEntity<String> result = restTemplate.exchange(URLs.COIN_MARKET_CAP_API + "/v1/cryptocurrency/listings/latest", GET, entity, String.class);
+        ResponseEntity<String> result = restTemplate
+                .exchange(URLs.COIN_MARKET_CAP_API + "/v1/cryptocurrency/listings/latest", GET, entity, String.class);
 
-        return CoinmarketcapMapper.mapToLatestMonetInfo(result.getBody()).getMonetInfoList();
+        LatestMonetInfo latestMonetInfo = null;
+        try {
+            latestMonetInfo = new ObjectMapper().readerFor(LatestMonetInfo.class).readValue(result.getBody());
+        } catch (IOException e) {
+            log.error("Cannot convert to JSON " + e.getMessage());
+        }
+        return latestMonetInfo.getMonetInfoList();
     }
+
+
+
+
+
+
 
     public CoinmarketcapService(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
